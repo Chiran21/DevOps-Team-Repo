@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git Clone') {
+            steps {
+                git 'https://github.com/Chiran21/Development-Team-Repo.git'
+            }
+        }
+        stage('Build Application Code') {
+            steps {
+                sh 'mvn package -f pom.xml'
+            }
+        }
+        stage('push code to artifactory') {
+            steps {
+                echo 'pushed .war file'
+            }
+        }
+        stage('deployed code to production') {
+            steps {
+                echo 'deployed to production'
+            }
+        }
+    
+    }
+ 
+}
